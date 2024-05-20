@@ -1,16 +1,5 @@
-module001/aula_03
-module001/aula_04
-module001/aula_05
-module001/aula_07
-module001/aula_08
-module001/aula_09
-module001/aula_10
-listaExercicios_01.js
-node_modules
-package-lock.json
-package.json
-ListaDeExercícios_02.pdf
-server.js
-module002
-.vscode
-tempCodeRunnerFile.js
+# Ignore everything:
+*
+
+# Except this directory:
+!module001/ListaDeTarefas_02/
