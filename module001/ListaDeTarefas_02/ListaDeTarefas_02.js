@@ -76,3 +76,110 @@ if (num === guess) {
 } else {
   console.log(`Você errou! O valor era ${num}!`);
 }
+
+// Exercício 07
+prompt = require("prompt-sync")();
+let carType = parseInt(
+  prompt("Informe o tipo do carro (1 - Popular, 2 - Luxo): ")
+);
+let rentalDays = parseInt(
+  prompt("Informe quantos dias o carro ficou alugado: ")
+);
+let kilometersTraveled = parseInt(
+  prompt("Informe a quantidade de quilometros percorridos: ")
+);
+let rent;
+if (carType === 1) {
+  if (kilometersTraveled <= 100) {
+    rent = kilometersTraveled * 0.2;
+  } else if (kilometersTraveled > 100) {
+    rent = kilometersTraveled * 0.1;
+  }
+  rent += rentalDays * 90;
+} else if (carType === 2) {
+  if (kilometersTraveled <= 200) {
+    rent = kilometersTraveled * 0.3;
+  } else if (kilometersTraveled > 200) {
+    rent = kilometersTraveled * 0.25;
+  }
+  rent += rentalDays * 150;
+}
+console.log(`Valor total do aluguel é de R$ ${rent.toFixed(2)}`);
+
+// Exercício 08
+prompt = require("prompt-sync")();
+let totalOfPoints;
+let amount;
+let activityHours = parseInt(
+  prompt("Informe quantas horas de atividade foram feitas no mês: ")
+);
+
+if (activityHours <= 10) {
+  totalOfPoints = activityHours * 2;
+} else if (activityHours > 10 && activityHours <= 20) {
+  totalOfPoints = activityHours * 5;
+} else if (activityHours > 20) {
+  totalOfPoints = activityHours * 10;
+}
+amount = totalOfPoints * 0.05;
+console.log(
+  `Seu total de pontos é de ${totalOfPoints} e o valor em dinheiros desses pontos é de R$ ${amount.toFixed(
+    2
+  )}`
+);
+
+// Exercício 09
+prompt = require("prompt-sync")();
+let salary;
+let gender;
+let totalMaleSalary = 0;
+let totalFemaleSalary = 0;
+let repeat;
+do {
+  salary = parseFloat(prompt("Informe o sálario: "));
+  gender = prompt("Informe o sexo (m - Masculino, f - Feminino): ");
+
+  if (gender === "m" || gender === "M") {
+    totalMaleSalary += salary;
+  } else if (gender === "f" || gender === "F") {
+    totalFemaleSalary += salary;
+  }
+
+  repeat = prompt("Quer continuar? (s - Sim, n - Não): ");
+} while (repeat === "s" || repeat === "S");
+
+console.log(
+  `Total de salários dos homens é de R$ ${totalMaleSalary.toFixed(2)}.`
+);
+console.log(
+  `Total de salários das mulheres é de R$ ${totalFemaleSalary.toFixed(2)}.`
+);
+
+// Exercício 10
+prompt = require("prompt-sync")();
+let value;
+let count = 0;
+let total = 0;
+let smallestValue;
+let repeat2;
+let pairCounter = 0;
+do {
+  value = parseFloat(prompt("Informe um número: "));
+  if (!smallestValue) {
+    smallestValue = value;
+  } else {
+    if (value < smallestValue) {
+      smallestValue = value;
+    }
+  }
+  total += value;
+  count++;
+  if (value % 2 == 0) {
+    pairCounter++;
+  }
+  repeat2 = prompt("Quer continuar? (s - Sim, n - Não): ");
+} while (repeat2 === "s" || repeat2 === "S");
+console.log(`O somatório dos valores é de ${total}.`);
+console.log(`O menor valor digitado foi o ${smallestValue}.`);
+console.log(`O média dos valores foi de ${(total / count).toFixed(2)}.`);
+console.log(`Total de valores pares digitados foi de ${pairCounter}.`);
