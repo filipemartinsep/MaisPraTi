@@ -616,3 +616,46 @@ function sumMatrix(matrix10x10) {
 }
 
 sumMatrix(matrix10x10);
+
+// Exercício 29
+const exampleMatrix5x5 = [
+  [1, 3, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [2, 1, 1, 1, 1],
+  [1, 1, 1, 1, 4],
+];
+
+function matrix5x5(matrix) {
+  let sumRow4 = 0;
+  let sumCol2 = 0;
+  let diagonalSum = 0;
+  let sumAllElements = 0;
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sumAllElements += matrix[i][j];
+
+      if (i === 3) {
+        sumRow4 += matrix[i][j];
+      }
+
+      if (j === 1) {
+        sumCol2 += matrix[i][j];
+      }
+
+      if (i === j) {
+        diagonalSum += matrix[i][j];
+      }
+    }
+  }
+  return {
+    "Soma da quarta linha": sumRow4,
+    "Soma da segunda coluna": sumCol2,
+    "Soma da diagonal principal": diagonalSum,
+    "Soma de todos os elementos": sumAllElements,
+    "Matriz original": matrix,
+  };
+}
+
+console.log(matrix5x5(exampleMatrix5x5));
