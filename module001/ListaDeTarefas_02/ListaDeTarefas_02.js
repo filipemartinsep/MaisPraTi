@@ -659,3 +659,71 @@ function matrix5x5(matrix) {
 }
 
 console.log(matrix5x5(exampleMatrix5x5));
+
+// Exercício 30
+const exampleMatrix2 = [
+  [1, 3, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [2, 1, 1, 1, 1],
+  [1, 1, 1, 1, 4],
+];
+
+function sumMatrix(matrix) {
+  let vectorSumCol = [];
+  let vectorSumRow = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let sumCol = 0;
+    let sumRow = 0;
+    for (let j = 0; j < matrix[i].length; j++) {
+      sumRow += matrix[i][j];
+      sumCol += matrix[j][i];
+    }
+    vectorSumRow.push(sumRow);
+    vectorSumCol.push(sumCol);
+  }
+
+  return {
+    "Vetor soma das linhas": vectorSumRow,
+    "Vetor soma das colunas": vectorSumCol,
+    "Matriz original": matrix,
+  };
+}
+
+console.log(sumMatrix(exampleMatrix2));
+
+// Exercício 31
+// Matriz exemplo
+const matrixV = [
+  [1, 2, 3],
+  [1, 2, 3],
+  [1, 2, 3],
+];
+
+const intNumberA = 3;
+const matrixX = [];
+
+function test(number, matrix) {
+  let counterA = 0;
+  for (let row of matrix) {
+    const matrixrow = [];
+
+    for (let element of row) {
+      if (element !== number) {
+        matrixrow.push(element);
+      } else {
+        counterA++;
+      }
+    }
+
+    matrixX.push(matrixrow);
+  }
+
+  return {
+    Contador: counterA,
+    Matriz: matrixX,
+  };
+}
+
+console.log(test(intNumberA, matrixV));
