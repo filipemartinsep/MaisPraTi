@@ -727,3 +727,84 @@ function test(number, matrix) {
 }
 
 console.log(test(intNumberA, matrixV));
+
+// Exercício 32
+// Matriz exemplo
+const exampleMatrix3 = [
+  [-1, -2, -3],
+  [1, 2, 3],
+];
+
+function matrix12X13(matrix) {
+  let dividedMatrix = [];
+  for (let row of matrix) {
+    let bigger = row[0];
+    let dividedRow = [];
+
+    for (let element of row) {
+      if (Math.abs(element) > Math.abs(bigger)) {
+        bigger = element;
+      }
+    }
+
+    for (let element of row) {
+      dividedRow.push(element / bigger);
+    }
+
+    dividedMatrix.push(dividedRow);
+  }
+
+  return {
+    originalMatrix: matrix,
+    dividedMatrix: dividedMatrix,
+  };
+}
+
+console.log(matrix12X13(exampleMatrix3));
+
+// Exercício 33
+// Matriz exemplo
+const exampleMatrix4 = [
+  [1, 2, 3],
+  [1, 2, 3],
+  [1, 2, 3],
+];
+
+function squareMatrix(matrix) {
+  let sumSecDiagonal = 0;
+  let counter = 0;
+  const multipliedMatrix = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (i + j === matrix.length - 1) {
+        sumSecDiagonal += matrix[i][j];
+        counter++;
+      }
+    }
+  }
+
+  let averageSecDiagonal = sumSecDiagonal / counter;
+  console.log(counter);
+
+  for (let i = 0; i < matrix.length; i++) {
+    let row = [];
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (i === j) {
+        row.push(matrix[i][j] * averageSecDiagonal);
+      } else {
+        row.push(matrix[i][j]);
+      }
+    }
+
+    multipliedMatrix.push(row);
+  }
+
+  return {
+    originalMatrix: matrix,
+    multipliedMatrix: multipliedMatrix,
+  };
+}
+
+console.log(squareMatrix(exampleMatrix4));
