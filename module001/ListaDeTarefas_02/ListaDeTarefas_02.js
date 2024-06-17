@@ -162,7 +162,7 @@ let count = 0;
 let total = 0;
 let smallestValue;
 let repeat2;
-let pairCounter = 0;
+let pairCounter2 = 0;
 do {
   value = parseFloat(prompt("Informe um número: "));
   if (!smallestValue) {
@@ -175,14 +175,14 @@ do {
   total += value;
   count++;
   if (value % 2 == 0) {
-    pairCounter++;
+    pairCounter2++;
   }
   repeat2 = prompt("Quer continuar? (s - Sim, n - Não): ");
 } while (repeat2 === "s" || repeat2 === "S");
 console.log(`O somatório dos valores é de ${total}.`);
 console.log(`O menor valor digitado foi o ${smallestValue}.`);
 console.log(`O média dos valores foi de ${(total / count).toFixed(2)}.`);
-console.log(`Total de valores pares digitados foi de ${pairCounter}.`);
+console.log(`Total de valores pares digitados foi de ${pairCounter2}.`);
 
 // Exercício 11
 prompt = require("prompt-sync")();
@@ -808,3 +808,81 @@ function squareMatrix(matrix) {
 }
 
 console.log(squareMatrix(exampleMatrix4));
+
+// Exercício 34
+const exampleMatrix5 = [
+  [1, 2, 3, 4, 5],
+  [1, 2, 3, 4, 5],
+  [1, 2, 3, 4, 5],
+  [1, 2, 3, 4, 5],
+  [1, 2, 3, 4, 5],
+];
+
+function matrix50x50(matrix) {
+  const multipliedMatrix = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let diagonalElement = 0;
+    let row = [];
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (i === j) {
+        diagonalElement = matrix[i][j];
+      }
+    }
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      row.push(matrix[i][j] * diagonalElement);
+    }
+
+    multipliedMatrix.push(row);
+  }
+
+  return {
+    originalMatrix: matrix,
+    multipliedMatrix: multipliedMatrix,
+  };
+}
+
+console.log(matrix50x50(exampleMatrix5));
+
+// Exercício 35
+const exampleVector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+function vectorOperation(vetor) {
+  let pairVector = [];
+  let oddVector = [];
+  let pairCounter = 0;
+  let oddCounter = 0;
+  let vectorLimiteSize = 5;
+
+  for (let element of exampleVector) {
+    let isPair = element % 2 === 0;
+
+    if (isPair) {
+      pairVector.splice(pairCounter, 1, element);
+      pairCounter++;
+    } else {
+      oddVector.splice(oddCounter, 1, element);
+      oddCounter++;
+    }
+
+    let isPairVectorFull = pairCounter === vectorLimiteSize;
+    let isOddVectorFull = oddCounter === vectorLimiteSize;
+
+    if (isPairVectorFull) {
+      pairCounter = 0;
+    }
+
+    if (isOddVectorFull) {
+      oddCounter = 0;
+    }
+  }
+
+  return {
+    pairVector: pairVector,
+    oddVector: oddVector,
+  };
+}
+
+console.log(vectorOperation(exampleVector));
