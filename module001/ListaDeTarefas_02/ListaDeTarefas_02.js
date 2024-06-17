@@ -871,10 +871,14 @@ function vectorOperation(vetor) {
     let isOddVectorFull = oddCounter === vectorLimiteSize;
 
     if (isPairVectorFull) {
+      console.log({ pairVectorfull: pairVector });
+      pairVector = [];
       pairCounter = 0;
     }
 
     if (isOddVectorFull) {
+      console.log({ oddVectorfull: oddVector });
+      oddVector = [];
       oddCounter = 0;
     }
   }
